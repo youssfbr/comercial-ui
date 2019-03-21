@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,7 +26,13 @@ public class OportunidadeController {
 	}
 	
 	@GetMapping("/{id}")
-	public Optional<Oportunidade> buscar(@PathVariable Long id) {
-		return oportunidades.findById(id);
+	public ResponseEntity<Oportunidade> buscar(@PathVariable Long id) {
+		Optional<Oportunidade> oportunidade = oportunidades.findById(id);
+		
+		if (oportunidade.isEmpty()) {
+			return ResponseEntity.notFound().build();
+		}
+		
+		return ResponseEntity.ok(oportunidade.get());
 	}
 }

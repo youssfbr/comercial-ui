@@ -18,7 +18,7 @@ public class Oportunidade {
 		@Column(name = "nome_prospecto")
 		private String nomeProspecto;
 		
-		private String descrição;
+		private String descricao;
 		private BigDecimal valor;
 		
 		public Long getId() {
@@ -34,10 +34,10 @@ public class Oportunidade {
 			this.nomeProspecto = nomeProspecto;
 		}
 		public String getDescrição() {
-			return descrição;
+			return descricao;
 		}
-		public void setDescrição(String descrição) {
-			this.descrição = descrição;
+		public void setDescrição(String descricao) {
+			this.descricao = descricao;
 		}
 		public BigDecimal getValor() {
 			return valor;
